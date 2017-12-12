@@ -1,0 +1,18 @@
+combine two tables
+
+1.create table Person(PersonId int primary key,FirstName varchar(200),LastName varchar(200));
+2.create table Address(AddressId int primary key,
+                        PersonId int,
+                        City varchar(200),
+                        State varchar(200),
+                        constraint p_fk foreign key (PersonId) references Person(PersonId))engine=InnoDB DEFAULT CHARSET=utf-8;
+                        
+Write a SQL query for a report that provides the following information for each person in the Person table,
+regardless if there is an address for each of those people:
+FirstName, LastName, City, State
+
+solution 1:
+  select FirstName,LastName,City,State from Person LEFT JOIN Address on Person.PersonId=Address.PersonId; 
+  
+知识：
+  [INNER] JOIN,LEFT JOIN ON,RIGHT JOIN ON,
