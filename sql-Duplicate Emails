@@ -1,0 +1,21 @@
+Write a SQL query to find all duplicate emails in a table named Person.
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+For example, your query should return the following for the above table:
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+
+solution 1:
+select distinct p1.Email as Email from Person as p1,Person as p2 where p1.Id<>p2.Id and p1.Email=p2.Email
+solution 2:
+select Email from Person group by Email having count(*) >1
+
+知识：where 的条件直接应用与处理的数据库中的表，having 的条件应用与处理的结果表
