@@ -43,6 +43,11 @@ select Salary from employee as e1 where 3>(select count(distinct e2.Salary) from
 step 2：添加条件 e2.DepartmentId = e1.DepartmentId
 select Salary from employee as e1 where 3>(select count(distinct e2.Salary) from Employee as e2 where e2.Salary > e1.Salary and
 e1.DepartmentId=e2.DepartmentId)
+1.group by having 分组后运用聚合函数 2.利于显示
+
+step3：连接两个表显示 join on
+ select d.name as Department,e1.name as Employee,Salary from Employee as e1 join Department as d on e1.DepartmentId=d.Id where 
+ 3>(select count(distinct e2.Salary) from Employee as e2 where e2.Salary > e1.Salary and e1.DepartmentId=e2.DepartmentId)
 
 
 
